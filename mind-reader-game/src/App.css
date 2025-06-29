@@ -1,0 +1,204 @@
+/* src/App.css */
+
+/* 1. CSS Variables and Base Styles */
+:root {
+  --primary-font: 'Poppins', sans-serif;
+  --heading-font: 'Righteous', cursive;
+  --glow-color: #00ffff;
+  --card-bg: rgba(20, 15, 45, 0.5);
+  --text-color: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #1f005c, #2d004b, #000428);
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: var(--primary-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 2. Main App and Container Card */
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.container {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px 50px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.container.fading-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* 3. Typography */
+h1 {
+  font-family: var(--heading-font);
+  font-size: 4rem;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  color: #fca311;
+  margin-bottom: 25px;
+}
+
+p, .instructions {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* 4. Custom Ordered List for Instructions */
+.instructions {
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 25px;
+  list-style: none;
+  counter-reset: instruction-counter;
+}
+
+.instructions li {
+  counter-increment: instruction-counter;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 45px;
+}
+
+.instructions li::before {
+  content: counter(instruction-counter);
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--glow-color);
+  color: #140f2d;
+  border-radius: 50%;
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 30px;
+}
+
+/* 5. Button Styling */
+.action-button {
+  font-family: var(--heading-font);
+  background: linear-gradient(45deg, #fca311, #ff7b00);
+  border: none;
+  border-radius: 10px;
+  color: #140f2d;
+  padding: 15px 40px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(252, 163, 17, 0.4);
+  margin-top: 20px;
+}
+
+.action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(252, 163, 17, 0.6);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+/* 6. Symbol Grid */
+.symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.symbol-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.symbol-item:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.symbol-item span:first-child {
+  color: var(--glow-color);
+}
+
+.symbol {
+  font-size: 1.8rem;
+  margin-left: 8px;
+}
+
+/* 7. Reveal Screen */
+.reveal-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.magic-symbol {
+  font-size: 12rem;
+  margin: 20px 0;
+  animation: reveal-pop 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  text-shadow: 0 0 15px #fff, 0 0 30px var(--glow-color), 0 0 50px var(--glow-color);
+}
+
+@keyframes reveal-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.start-icon {
+    font-size: 6rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
